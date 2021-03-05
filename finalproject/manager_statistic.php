@@ -2,7 +2,7 @@
 session_start();
 if( ! $_SESSION['AdminRights']){
 	echo "<script>alert('並無管理員權限!');</script>";
-	echo '<meta http-equiv=REFRESH CONTENT=0;url=staff.html>';
+	echo "<script>history.go(-1)</script>";
 	exit();
 }
 ?>
@@ -29,8 +29,12 @@ if( ! $_SESSION['AdminRights']){
 			<br>
 			<li style="padding:10px">
 			<a href="manager_statistic1.php"><input type="button" class="btn" value="1.統計資料" style="width:306px;font-size:17px;"></a><p>
+			<?php if($_SESSION['AdminRights']!=4){ ?>
 			<a href="manager_statistic2.php"><input type="button" class="btn" value="2.會員列表" style="width:306px;font-size:17px;"></a><p>
+			<?php } ?>
+			<?php if($_SESSION['AdminRights']!=4){ ?>
 			<a href="manager_statistic3.php"><input type="button" class="btn" value="3.訂單列表" style="width:306px;font-size:17px;"></a><p>
+			<?php } ?>
 			</li>
 			</center>
 			

@@ -45,7 +45,7 @@ $db_conn = connect2db($dbhost, $dbuser, $dbpwd, $dbname);
 	}
 */
 
-	$sqlcmd = "SELECT * FROM 未上架商品 WHERE 已上架 = 0";
+	$sqlcmd = "SELECT * FROM 菜單 WHERE 已上架 = 0";
 	$result = querydb($sqlcmd, $db_conn);
 ?>
 
@@ -59,7 +59,7 @@ $db_conn = connect2db($dbhost, $dbuser, $dbpwd, $dbname);
 
 <nav>
   <ul>
-	<li><a href="manager_statistic.php">回統計選單</a></li>
+	<li><a href="manager.php">回管理系統主頁</a></li>
   </ul>
 </nav>
 
