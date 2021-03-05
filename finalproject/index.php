@@ -27,7 +27,7 @@ session_destroy();
 	<img src="images/logo.png" class="center" style="border:2px white dashed;">
 		<ul class="main-btn">
 	<center>
-			<li class="midtext-text"><p>60嵐外送訂購系統&emsp;\\\\\\</p></li><br>
+			<li class="midtext-text"><p>60嵐外送訂購系統&emsp;\\\\</p></li><br>
 			<table border="0">
 			<tr>
 				<td><li><a href="introduce.html"> <input name="" type="button" class="btn" value="介紹"></a></li></td>

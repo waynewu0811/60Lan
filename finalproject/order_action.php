@@ -27,10 +27,15 @@ $sum = 0;
 
 $sqlcmd = "SELECT MAX(`品項編號`) FROM `菜單` ";
 $max = querydb_fetch_row($sqlcmd, $db_conn);
-
-for($i=1;$i<=$max[0];$i++){
-	$sum += $_POST[$i];
+$sqlcmd = "SELECT * FROM 菜單";
+$result = querydb($sqlcmd, $db_conn);
+$i=1;
+foreach ($result as $row) {
+	if(isset($_POST[$i])){
+		$sum += $_POST[$i]; $i++;
+	}
 }
+
 $_SESSION['sum'] = $sum;
 if (empty($_SESSION['sum'])){
 	echo "<script>alert('消費總金額不能為零!請重新填寫訂單!'); </script>";
@@ -137,16 +142,18 @@ function check()
 		$_SESSION['count'] = array();
 		//print_r($_POST);
 			foreach ($result as $row) {
-				$ex = $_POST[$i]*$row['單價'];
-				if($_POST[$i] != 0){
-					echo '<tr>';
-					echo '<td width=48%>'.$row['品項名稱'].'</td>';
-					echo '<td width=20%>'.$_POST[$i].'</td>';
-					echo '<td width=10%>杯</td>';
-					echo '<td width=22%> $'.$ex.'</td>';
-					echo '</tr>';
+				if(isset($_POST[$i])){
+					$ex = $_POST[$i]*$row['單價'];
+					if($_POST[$i] != 0){
+						echo '<tr>';
+						echo '<td width=48%>'.$row['品項名稱'].'</td>';
+						echo '<td width=20%>'.$_POST[$i].'</td>';
+						echo '<td width=10%>杯</td>';
+						echo '<td width=22%> $'.$ex.'</td>';
+						echo '</tr>';
+					}
+					$_SESSION['count'][$i] = $_POST[$i];
 				}
-				$_SESSION['count'][$i] = $_POST[$i];
 				$i++;
 				$sum += $ex;
 			}
@@ -192,7 +199,9 @@ function check()
 			<td><li><input type="submit" name="renew" value="調整訂單" class="btn"/></li></td>
 			<?php
 			for($j=1;$j<=$max[0];$j++){
-				echo'<input type="hidden" name="'.$j.'" value="'.$_POST[$j].'">';
+				if(isset($_POST[$i])){
+					echo'<input type="hidden" name="'.$j.'" value="'.$_POST[$j].'">';
+				}
 			}
 			?>
 			</form>

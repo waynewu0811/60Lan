@@ -1,8 +1,8 @@
 <?php
-$dbname = "dbname";
-$dbhost = "X.X.X.X;
-$dbuser = "db_user";
-$dbpwd = "db_pwd";
+$dbname = "I4010_9607";
+$dbhost = "127.0.0.1";
+$dbuser = "root";
+$dbpwd = "";
 $AttachDir = '/doc';
 $ItemPerPage = 5;
 ?>

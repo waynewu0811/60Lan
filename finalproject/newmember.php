@@ -21,17 +21,17 @@ input[type=text]:focus {
 <nav>
   <ul>
     <li><a href="introduce.html">介紹</a></li>
-    <li><a href="order.php">立即訂購</a></li>
+    <li><a href="privacyRule.php">立即訂購</a></li>
     <li><a href="index.php">回到首頁</a></li>
   </ul>
 </nav>
 <body>
     <form action="register.php" method="post">
 	<div id="main-box">
-	<img src="images/logo2.png" style=" height=50%">
+	<img src="images/logo2.png">
 	<ul class="main-btn"><br>
 	
-	<h2 style="margin:0 10% 8%;">加入會員&emsp;\\\\\\</h2>
+	<h2 style="margin:0 auto;padding: 0 10 0;">加入會員</h2>
 	<div style="margin:0 0 0 10px;">
 		<li class="inline">請輸入會員帳號:&emsp;</li>
 		<li><input type="text" maxlength="15" name="id" placeholder="帳號長度為1-15位英數字" style="width:300px;height:30px;" pattern="[a-zA-Z0-9]+" required /></li><br>

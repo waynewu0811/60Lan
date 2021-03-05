@@ -2,7 +2,7 @@
 session_start();
 if( ! $_SESSION['AdminRights']){
 	echo "<script>alert('並無管理員權限!');</script>";
-	echo '<meta http-equiv=REFRESH CONTENT=0;url=staff.html>';
+	echo "<script>history.go(-1)</script>";
 	exit();
 }
 ?>
@@ -11,7 +11,7 @@ require_once("./include/configure.php");
 require_once("./include/db_func.php");
 $db_conn = connect2db($dbhost, $dbuser, $dbpwd, $dbname);
 
-$result = querydb("SELECT * FROM 菜單", $db_conn);
+$result = querydb("SELECT * FROM 菜單 WHERE 已上架=1", $db_conn);
 ?>
 
 <html>
@@ -32,30 +32,32 @@ $result = querydb("SELECT * FROM 菜單", $db_conn);
 
     <form action="manager_addnew_done.php" method="post">
         <div id="main-box">
-            <h2 style="color:white">目前品項</h2>
-			<div  style="max-height:400px;overflow:auto" class="scrollbar">
-            <center>
-                <table width="400" border="1" style="color:white">
+            <h2 style="color:white">目前已上架品項</h2>
+			<center>
+			<table width="400" border="1" style="color:white">
                     <tr>
-                        <td>名稱</td>
-                        <td>單價(元)</td>
+                        <td width="60%">名稱</td>
+                        <td width="40%">單價(元)</td>
                     </tr>
-                    <?php
-                    foreach ($result as $row) {
-                    echo '
-                    <tr>
-                        ';
-                        echo '
-                        <td>'.$row['品項名稱'].'</td>'.'
-                        <td>'.'$'.$row['單價'].'</td>';
-                        echo '
-                    </tr>';
-                    }
-                    ?>
-                </table>
-            </center>
+			</table>
+			<div  style="max-height:300px;overflow:auto" class="scrollbar">
+			<table width="400" border="1" style="color:white">	
+				<?php
+				foreach ($result as $row){
+				echo '
+				<tr>
+					';
+					echo '
+					<td width="60%">'.$row['品項名稱'].'</td>'.'
+					<td width="40%">'.'$'.$row['單價'].'</td>';
+					echo '
+				</tr>';
+				}
+				?>
+			</table>
 			</div>
-            <h2 style="color:white">新增品項</h2>
+			</center>
+            <h2 style="color:white">新增品項(需經過審核)</h2>
             <ul class="main-btn">
                 <center>
                     <li class="inline">請輸入新品名稱:&emsp;</li>

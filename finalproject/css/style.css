@@ -60,7 +60,7 @@ table{
 	font-size:15px;
 	letter-spacing: 10px;
 	border-radius: 3px;
-	background:none;
+	background:#1c292b;
 	font-family: "微軟正黑體";
 	cursor:pointer;
 	}
@@ -163,7 +163,7 @@ main-btn li{
 	font-family: "微軟正黑體"; 
 	font-weight:bold; 
 	letter-spacing: 6px; 
-	font-size: 17px; 
+	font-size: 22px; 
 	margin: 16px auto ;
 	}
 .midtext-text p{ 
