@@ -199,7 +199,7 @@ function check()
 			<td><li><input type="submit" name="renew" value="調整訂單" class="btn"/></li></td>
 			<?php
 			for($j=1;$j<=$max[0];$j++){
-				if(isset($_POST[$i])){
+				if(isset($_POST[$j])){
 					echo'<input type="hidden" name="'.$j.'" value="'.$_POST[$j].'">';
 				}
 			}
